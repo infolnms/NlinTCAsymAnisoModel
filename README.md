@@ -23,7 +23,7 @@ The developed constitutive model is implemented in Abaqus/Explicit via VUMAT sub
 
 ## Constitutive model usage manual
 
-To use the consitutive model provided in `explicitU-D.dll`, define user matirial in abaqus input file using following command:
+To use the consitutive model provided in `explicitU-D.dll`, define user matirial in abaqus input file using the following command:
 ```
 *Material, name=[arbitrary_name]
 *Density
@@ -31,20 +31,24 @@ To use the consitutive model provided in `explicitU-D.dll`, define user matirial
 *User Material, constants=38
  [p1], [p2], [p3], ... , [p38]
 ```
-Parameters 1-9 represents following terms in linear tensile compliance matrix 
+Parameters `p1`-`p18` represents terms in the linear tension (`St`) and linear compression (`Sc`) compliance tensors as indicated below: 
+```
+     [p1  p4  p5  0   0   0  ]       [p10 p13 p14  0   0   0  ]
+     [p4  p2  p6  0   0   0  ]       [p13 p11 p15  0   0   0  ]
+St = [p5  p6  p3  0   0   0  ]  Sc = [p14 p15 p12  0   0   0  ]
+     [0   0   0   p7  0   0  ]       [0   0   0    p16 0   0  ]
+     [0   0   0   0   p8  0  ]       [0   0   0    0   p17 0  ]
+     [0   0   0   0   0   p9 ]       [0   0   0    0   0   p18]
+```
+Parameters `p19`-`p36` represents terms in the non-linear tension (`Nt`) and non-linear compression (`Nc`) compliance tensors as indicated below: 
+```
+     [p19 p22 p23 0   0   0  ]       [p28 p31 p32  0   0   0  ]
+     [p22 p20 p24 0   0   0  ]       [p31 p29 p33  0   0   0  ]
+Nt = [p23 p24 p21 0   0   0  ]  Nc = [p32 p33 p30  0   0   0  ]
+     [0   0   0   p25 0   0  ]       [0   0   0    p34 0   0  ]
+     [0   0   0   0   p26 0  ]       [0   0   0    0   p35 0  ]
+     [0   0   0   0   0   p27]       [0   0   0    0   0   p36]
+```
+Parameters `p37` and `p38` represents tensile (`nt`) and compressive (`nc`) exponents, respectively.
 
 **Note:** Because the model is implemented in Abaqus/Explicit, the density of the material has to be defined.
-
-         [p1  p4  p5  0   0   0  ]       [p10 p13 p14  0   0   0  ]
-         [p4  p2  p6  0   0   0  ]       [p13 p11 p15  0   0   0  ]
-    St = [p5  p6  p3  0   0   0  ]  Sc = [p14 p15 p12  0   0   0  ]
-         [0   0   0   p7  0   0  ]       [0   0   0    p16 0   0  ]
-         [0   0   0   0   p8  0  ]       [0   0   0    0   p17 0  ]
-         [0   0   0   0   0   p9 ]       [0   0   0    0   0   p18]
-         
-         [p19  p4  p5  0   0   0  ]       [p10 p13 p14  0   0   0  ]
-         [p4  p2  p6  0   0   0  ]       [p13 p11 p15  0   0   0  ]
-    St = [p5  p6  p3  0   0   0  ]  Sc = [p14 p15 p12  0   0   0  ]
-         [0   0   0   p7  0   0  ]       [0   0   0    p16 0   0  ]
-         [0   0   0   0   p8  0  ]       [0   0   0    0   p17 0  ]
-         [0   0   0   0   0   p9 ]       [0   0   0    0   0   p18]
