@@ -1,2 +1,3 @@
-# NlinTCAsymAnisoModel
-Non-linear tension-compression asymmetric anisotropic constitutive model
+# Non-linear tension-compression asymmetric anisotropic constitutive model
+
+A new constitutive model
