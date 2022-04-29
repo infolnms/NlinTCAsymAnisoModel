@@ -1,5 +1,5 @@
 # Three-point bending test example
 
-Abaqus input file example of three-point bending test replication from Makeev et al.
+Provided Abaqus input file contains the example of three-point bending test shown on picture below. Lower support is fixed, upper support is force driven. Symetric boundary contitions are prescribed in Y-X and Y-Z planes.
  
 ![image](3P_bend.png)
