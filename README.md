@@ -16,9 +16,9 @@ The developed constitutive model is implemented in Abaqus/Explicit via VUMAT sub
    usub_lib_dir=os.getcwd()
    ```
 4. Run Abaqus/Explicit using the following command:
-
-   `abaqus job=[job_name] double=both`
-
+   ```
+   abaqus job=[job_name] double=both
+   ```
    **Note:** Abaqus solver will automatically include a shared library located in the current working directory. Therefore `user` argument should not be used. Only a double-precision version of the shared library is included, therefore option `double=both` is mandatory. 
 
 ## Constitutive model usage manual
