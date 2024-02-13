@@ -39,7 +39,7 @@ The constitutive model can be used with other Abaqus versions (including version
 
 ## Constitutive model usage manual
 
-To use the constitutive model provided in `explicitU-D.dll`, define user material in Abaqus input file using the following command:
+To use the constitutive model, user material in Abaqus input file must be defined using the following command:
 ```
 *Material, name=[arbitrary_name]
 *Density
